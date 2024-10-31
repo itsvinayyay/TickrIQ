@@ -3,9 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:provider/provider.dart';
 import 'package:ticket_trace/core/routes/named_routes.dart';
-import 'package:ticket_trace/cubits/earning_calendar_cubit/earning_calendar_cubit.dart';
+
 import 'package:ticket_trace/cubits/earning_call_cubit/earning_call_cubit.dart';
 import 'package:ticket_trace/data/models/earning_call_navigation_model.dart';
 import 'package:ticket_trace/presentation/earning_results_screen.dart';
@@ -19,8 +18,8 @@ class GeneratedRoutes {
       case Routes.earningResultsScreen:
         return MaterialPageRoute(
             builder: (context) => EarningResultsScreen(
-              ticker: routeSettings.arguments as String,
-            ),
+                  ticker: routeSettings.arguments as String,
+                ),
             settings: routeSettings);
       case Routes.earningTranscriptScreen:
         return MaterialPageRoute(
