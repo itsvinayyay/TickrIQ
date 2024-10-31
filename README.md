@@ -71,7 +71,7 @@ dependencies:
 ## 🎥 Links
 
 - **Demo Video**: https://drive.google.com/file/d/1PXl-vDEJE9qc_SyK2sBZJ3I2i-RI6XK9/view?usp=sharing
-- **APK Download**: https://drive.google.com/file/d/1MoXqeLu84nN1izn3icN51tLdmOpgtfQz/view?usp=sharing
+- **APK Download**: https://drive.google.com/file/d/1cKNKkT-aJrAX2a0KRYnoqz9YhpEOtuat/view?usp=sharing
 
 ---
 
