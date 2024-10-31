@@ -16,13 +16,7 @@ class TickerDisplay extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Container(
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(colors: [
-        //     Color(0XFF12121C),
-        //     Color(0XFF191935),
-        //   ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        // ),
-        color: Color(0XFF12121C),
+        color: const Color(0XFF12121C),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
@@ -32,7 +26,7 @@ class TickerDisplay extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                     ),
                     Image.asset(
@@ -42,7 +36,7 @@ class TickerDisplay extends StatelessWidget {
                         .animate() // delays start until after the first text
                         .fadeIn(duration: 500.ms)
                         .slideY(begin: 0.5, duration: 500.ms),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Text(
@@ -58,7 +52,7 @@ class TickerDisplay extends StatelessWidget {
                         .animate(delay: 300.ms)
                         .fadeIn(duration: 500.ms)
                         .slideY(begin: 0.5, duration: 500.ms),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
@@ -75,7 +69,7 @@ class TickerDisplay extends StatelessWidget {
                                 .ms) // delays start until after the first text
                         .fadeIn(duration: 500.ms)
                         .slideY(begin: 0.5, duration: 500.ms),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomTextFormField(
@@ -87,24 +81,25 @@ class TickerDisplay extends StatelessWidget {
                                 .ms) // delays start until after the first text
                         .fadeIn(duration: 500.ms)
                         .slideY(begin: 0.5, duration: 500.ms),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     CupertinoButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
                         if (_textEditingController.text.trim() == '') {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text("Please provide a ticker!")));
                         } else {
                           Navigator.pushNamed(
-                              context, Routes.earningResultsScreen, arguments: _textEditingController.text.trim());
+                              context, Routes.earningResultsScreen,
+                              arguments: _textEditingController.text.trim());
                         }
                       },
                       child: CircleAvatar(
                         radius: 30.sp,
-                        backgroundColor: Color(0XFF279646),
-                        child: Icon(
+                        backgroundColor: const Color(0XFF279646),
+                        child: const Icon(
                           Icons.arrow_forward_ios_rounded,
                           color: Colors.white,
                         ),

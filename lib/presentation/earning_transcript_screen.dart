@@ -8,7 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:ticket_trace/core/theme.dart';
 import 'package:ticket_trace/cubits/earning_call_cubit/earning_call_cubit.dart';
 import 'package:ticket_trace/data/models/earning_call_navigation_model.dart';
-import 'package:ticket_trace/data/models/earning_call_states.dart';
+import 'package:ticket_trace/cubits/earning_call_cubit/earning_call_states.dart';
 
 class EarningTranscriptScreen extends StatefulWidget {
   final EarningCallNavigationModel earningCallNavigationModel;
@@ -27,7 +27,6 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _earningCallCubit = BlocProvider.of<EarningCallCubit>(context);
     _earningCallCubit.fetchEarningCallTranscript(
@@ -38,7 +37,6 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _earningCallCubit.close();
   }
@@ -54,11 +52,11 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
       ),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
@@ -68,12 +66,12 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
                     "assets/images/transcript.png",
                     width: 100.w,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Flexible(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 30),
+                      padding: const EdgeInsets.only(top: 30),
                       child: Text(
                         "- Thank you for joining our earnings call. We're excited to share our latest results and future outlook with you.",
                         style: TextStyle(
@@ -88,7 +86,7 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Text(
@@ -101,38 +99,44 @@ class _EarningTranscriptScreenState extends State<EarningTranscriptScreen> {
                     height: 1.2,
                     decoration: TextDecoration.none),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               BlocBuilder<EarningCallCubit, EarningCallStates>(
-  builder: (context, state) {
-    if (state is EarningCallErrorState) {
-      return Text(state.errorMessage);
-    } else if (state is EarningCallLoadedState) {
-      return Expanded(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Text(
-            state.transcript,
-            style: TextStyle(
-              fontFamily: "dmSans",
-              color: Colors.white.withOpacity(0.6),
-              fontSize: 16.sp,
-              height: 1.4,
-              decoration: TextDecoration.none,
-            ),
-          )
-          .animate() // Apply animation to the entire text widget
-          .fadeIn(duration: 500.ms) // Duration can be adjusted
-          .moveY(begin: 30, end: 0, duration: 500.ms), // Slight upward slide effect
-        ),
-      );
-    }
+                  builder: (context, state) {
+                if (state is EarningCallErrorState) {
+                  return Text(state.errorMessage);
+                } else if (state is EarningCallLoadedState) {
+                  return Expanded(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Text(
+                        state.transcript,
+                        style: TextStyle(
+                          fontFamily: "dmSans",
+                          color: Colors.white.withOpacity(0.6),
+                          fontSize: 16.sp,
+                          height: 1.4,
+                          decoration: TextDecoration.none,
+                        ),
+                      )
+                          .animate() // Apply animation to the entire text widget
+                          .fadeIn(duration: 500.ms) // Duration can be adjusted
+                          .moveY(
+                              begin: 30,
+                              end: 0,
+                              duration: 500.ms), // Slight upward slide effect
+                    ),
+                  );
+                }
 
-    return Expanded(child: Center(child: SpinKitWaveSpinner(color: AppColors.fuelGreen, size: 120.sp,)));
-  }
-)
-
+                return Expanded(
+                    child: Center(
+                        child: SpinKitWaveSpinner(
+                  color: AppColors.fuelGreen,
+                  size: 120.sp,
+                )));
+              })
             ],
           ),
         ),

@@ -33,7 +33,6 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _earningCalendarCubit = BlocProvider.of<EarningCalendarCubit>(context);
     _earningCalendarCubit.fetchEarningResults(ticker: widget.ticker);
@@ -54,7 +53,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               BlocBuilder<EarningCalendarCubit, EarningCalendarStates>(
@@ -64,14 +63,14 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                   return Center(
                       child: SpinKitWaveSpinner(
                     color: AppColors.fuelGreen,
-                    waveColor: Color(0xFFFFA726),
+                    waveColor: const Color(0xFFFFA726),
                     size: 120.sp,
                   ));
                 }
                 if (state is EarningErrorState) {
                   return Text(
                     state.errorMessage,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   );
                 }
                 if (state.earningResults.isEmpty) {
@@ -87,7 +86,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                             height: 1.2),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -99,7 +98,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                             height: 1),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -130,7 +129,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                   ticker: widget.ticker,
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Text(
@@ -142,7 +141,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                     fontWeight: FontWeight.bold,
                     height: 1.2),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               BlocBuilder<EarningCalendarCubit, EarningCalendarStates>(
@@ -159,7 +158,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                 } else if (state is EarningErrorState) {
                   return Text(
                     state.errorMessage,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   );
                 }
                 if (state.earningResults.isEmpty) {
@@ -177,7 +176,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                               height: 1.2),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
@@ -203,7 +202,7 @@ class _EarningResultsScreenState extends State<EarningResultsScreen> {
                     revenueGrowth(earningResults: state.earningResults);
                 return Expanded(
                   child: GridView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 16.h,

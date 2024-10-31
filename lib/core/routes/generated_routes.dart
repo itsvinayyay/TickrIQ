@@ -18,12 +18,9 @@ class GeneratedRoutes {
     switch (routeSettings.name) {
       case Routes.earningResultsScreen:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => EarningCalendarCubit(),
-                  child: EarningResultsScreen(
-                    ticker: routeSettings.arguments as String,
-                  ),
-                ),
+            builder: (context) => EarningResultsScreen(
+              ticker: routeSettings.arguments as String,
+            ),
             settings: routeSettings);
       case Routes.earningTranscriptScreen:
         return MaterialPageRoute(
